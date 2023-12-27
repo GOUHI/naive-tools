@@ -12,7 +12,8 @@
     "naive-ui": "^2.36.0",
     "normalize.css": "^8.0.1",
     "vfonts": "^0.0.3",
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
