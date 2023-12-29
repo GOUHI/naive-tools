@@ -19,7 +19,4 @@
 import Date from '../components/date.vue'
 </script>
 <style scoped>
-.n-card.n-card--bordered {
-  border: unset;
-}
 </style>
