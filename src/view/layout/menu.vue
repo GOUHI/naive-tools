@@ -4,18 +4,21 @@
       <img src="/public/assets/logo.png" alt="" class="logo">
     </div>
     <div class="menu-box">
-      <router-link :to="item.to" v-for="item in menuList" class="menu-item"> {{ item.name }}</router-link>
+      <template v-for="item in router.options.routes">
+        <router-link :to="item.path"  :class="menu === item.path ? 'menu-item menu-select' : 'menu-item '" @click="handleMenu(item.path)" v-if="item.meta"> {{ item.meta?.title }}</router-link>
+      </template>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-const menuList = ref([
-  {to: '/',name: '主页'},
-  {to: '/tools',name: '工具'},
-  {to: '/about',name: '单词本'},
-  {to: '/about',name: '关于'}
-])
+import { useRoute, useRouter } from 'vue-router';
+const route = useRoute()
+const router = useRouter()
+const menu = ref(route.path)
+const handleMenu = (v:string) => {
+  menu.value = v
+}
 </script>
 <style scoped lang="less">
 .logo-box {
@@ -45,8 +48,11 @@ const menuList = ref([
   a {
     text-decoration:none
   }
+  .menu-select {
+    color: #FF9900;
+  }
   .menu-item:hover {
-    color: #2A84F0;
+    color: #FF9900;
   }
 }
 </style>

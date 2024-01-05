@@ -9,7 +9,14 @@
           颐和园路
         </n-layout-header>
         <n-layout-content content-style="padding: 24px;">
-          <router-view></router-view>
+          <n-breadcrumb>
+            <n-breadcrumb-item>北京总行</n-breadcrumb-item>
+            <n-breadcrumb-item>天津分行</n-breadcrumb-item>
+            <n-breadcrumb-item>平山道支行</n-breadcrumb-item>
+          </n-breadcrumb>
+          <div style="padding: 20px;">
+            <router-view></router-view>
+          </div>
         </n-layout-content>
       </n-layout>
     </n-layout>
