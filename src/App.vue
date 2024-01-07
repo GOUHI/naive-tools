@@ -3,7 +3,9 @@ import Layout from './view/layout/index.vue'
 </script>
 
 <template>
-  <Layout />
+  <n-message-provider>
+    <Layout />
+  </n-message-provider>
 </template>
 
 <style scoped>
