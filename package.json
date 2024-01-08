@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "yarn@4.0.2",
   "scripts": {
+    "vscode": "yarn dlx @yarnpkg/sdks vscode",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
