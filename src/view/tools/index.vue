@@ -16,18 +16,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-// import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const toolsList = router.options.routes.filter(i => i.path === '/tools')[0].children
-// const toolsList = ref([
-//   {name:'时间转换',desc: '用于时间戳和时间之间进行转换',to: '/date'},
-//   {name:'json转换',desc: '用于时间戳和时间之间进行转换',to: '/date'},
-//   {name:'常用函数',desc: '用于时间戳和时间之间进行转换',to: '/date'},
-//   {name:'时间转换',desc: '用于时间戳和时间之间进行转换',to: '/date'},
-//   {name:'时间转换',desc: '用于时间戳和时间之间进行转换',to: '/date'},
-// ])
-
 // 点击进行跳转工具页面
 const handleToolsItem = (path: string) => {
   console.log(path);
