@@ -3,8 +3,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from '../view/index.vue'
 import About from '../view/about.vue'
 import Tools from '@/view/tools/index.vue'
+import Words from '@/view/words/index.vue'
 import Date from '@/view/date/index.vue'
-import Unicode from '@/view/unicode/index.vue'
+import URL from '@/view/url/index.vue'
 
 const routes = [
   { path: '/', component: Home, meta: { title: '主页' }, },
@@ -22,11 +23,16 @@ const routes = [
         meta: { title: '时间转换', desc: '用于时间戳和时间之间进行转换' }
       },
       {
-        path: 'unicode', component: Unicode,
-        meta: { title: 'Unicode编码', desc: '用于Unicode快速编码的工具' }
+        path: 'url', component: URL,
+        meta: { title: 'URLCode编码', desc: '用于URLCode快速编码、解码的工具' }
       },
     ]
-  }
+  },
+  {
+    path: '/words',
+    component: Words,
+    meta: { title: '单词本' },
+  },
 ]
 
 const router = createRouter({
