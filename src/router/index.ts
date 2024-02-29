@@ -8,8 +8,8 @@ import Date from '@/view/date/index.vue'
 import URL from '@/view/url/index.vue'
 
 const routes = [
-  { path: '/', component: Home, meta: { title: '主页' }, },
-  { path: '/about', component: About, meta: { title: '关于' }, },
+  { path: '/', redirect: '/tool' },
+  // { path: '/about', component: About, meta: { title: '关于' }, },
   {
     path: '/tool',
     component: Tools,

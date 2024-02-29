@@ -21,7 +21,6 @@ const router = useRouter()
 const toolsList = router.options.routes.filter(i => i.path === '/tools')[0].children
 // 点击进行跳转工具页面
 const handleToolsItem = (path: string) => {
-  console.log(path);
   router.push({
     path: '/tools/' + path
   })

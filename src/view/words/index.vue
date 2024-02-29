@@ -57,14 +57,14 @@
   <audio ref="audioRef"></audio>
 </template>
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue'
+import { ref, reactive } from 'vue'
 import { AudioTwotone } from '@vicons/antd'
 import { wordsList } from './word.ts'
 const list = reactive({
   table: [...wordsList]
 })
 const audioRef = ref<HTMLAudioElement>()
-const paly = (audio) => {
+const paly = (audio: string) => {
   audioRef.value!.src = new URL(audio, import.meta.url).href
   // 播放 暂停也同理
   audioRef.value?.play()
