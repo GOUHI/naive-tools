@@ -26,13 +26,6 @@ import Menu from './menu.vue'
 import { useRouter, useRoute } from 'vue-router';
 const route = useRoute()
 const router = useRouter()
-console.log(route);
-console.log(route.path);
-console.log(router);
-
-// const newRoute = computed(() => {
-//   return route
-// })
 type BreadcrumbItem = { name: string, path: string }
 let breadcrumb = ref<BreadcrumbItem[]>([])
 
