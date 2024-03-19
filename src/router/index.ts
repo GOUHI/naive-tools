@@ -7,6 +7,7 @@ import Words from '@/view/words/index.vue'
 import Date from '@/view/date/index.vue'
 import URL from '@/view/url/index.vue'
 import Diff from '@/view/diff/index.vue'
+import Random from '@/view/random/index.vue'
 
 const routes = [
   { path: '/', redirect: '/tool' },
@@ -30,6 +31,10 @@ const routes = [
       {
         path: 'diff', component: Diff,
         meta: { title: '文本对比', desc: '用于文本对比，可获取重复或者去重数据' }
+      },
+      {
+        path: 'random', component: Random,
+        meta: { title: '随机字符串', desc: '生成随机字符串' }
       },
     ]
   },
