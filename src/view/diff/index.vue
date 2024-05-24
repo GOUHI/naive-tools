@@ -13,8 +13,21 @@
       }" placeholder="请把你需要对比的内容粘贴在这里" />
     </div>
     <div>
-      <h3>对比内容</h3>
-      <Diff theme="light" language="plaintext" :prev="oldText" :current="newText" virtualScroll></Diff>
+      <div class="style-box">
+        <h3>对比内容</h3>
+        <div style="margin-left: 10px;width: 180px;">
+          <n-space vertical>
+            <n-select v-model:value="style" :options="styleOptions" @update:value="handleUpdateValue" />
+          </n-space>
+        </div>
+        <div style="margin-left: 10px;width: 180px;">
+          <n-space vertical>
+            <n-select v-model:value="languages" filterable placeholder="请选择文本格式" :options="languagesOptions" />
+          </n-space>
+        </div>
+      </div>
+      <Diff v-if="style === 'diff'" theme="light" :language="languages" :prev="oldText" :current="newText" virtualScroll></Diff>
+      <code-diff v-if="style === 'git'" theme="light" :language="languages" :old-string="oldText" :new-string="newText" output-format="side-by-side"></code-diff>
     </div>
     <div class="btn">
       <n-space>
@@ -43,6 +56,21 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
+const styleOptions = ref([
+  {label: '对比样式', value: 'diff'},
+  {label: 'GIT样式', value: 'git'},
+])
+const style = ref('diff')
+const languagesOptions = ref([
+  {label: '纯文本', value: 'plaintext'},
+  {label: 'xml', value: 'xml'},
+  {label: 'markdown', value: 'markdown'},
+  {label: 'javascript', value: 'javascript'},
+  {label: 'json', value: 'json'},
+  {label: 'css', value: 'css'},
+  {label: 'typescript', value: 'typescript'}
+])
+const languages = ref('plaintext')
 const oldText = ref('')
 const newText = ref('')
 const repetitionText = ref('')
@@ -84,13 +112,45 @@ function findRepeatedChars(str1: string, str2: string, type: number) {
   }
   return repeated;
 }
+
+// 判断对比样式赋值可选样式格式
+const handleUpdateValue = (value: string) => {
+  if(value === 'diff') {
+    languagesOptions.value = [
+      {label: '纯文本', value: 'plaintext'},
+      {label: 'xml', value: 'xml'},
+      {label: 'markdown', value: 'markdown'},
+      {label: 'javascript', value: 'javascript'},
+      {label: 'json', value: 'json'},
+      {label: 'css', value: 'css'},
+      {label: 'typescript', value: 'typescript'}
+    ]
+  }
+  if(value === 'git') {
+    languagesOptions.value = [
+      {label: '纯文本', value: 'plaintext'},
+      {label: 'xml', value: 'xml'},
+      {label: 'javascript', value: 'javascript'},
+      {label: 'json', value: 'json'},
+      {label: 'yaml', value: 'yaml'},
+      {label: 'python', value: 'python'},
+      {label: 'java', value: 'java'},
+      {label: 'bash', value: 'bash'},
+      {label: 'sql', value: 'sql'}
+    ]
+  }
+  languages.value = 'plaintext'
+}
 </script>
 <style scoped lang="less">
 .input-box {
   display: flex;
   align-items: center;
 }
-
+.style-box{
+  display: flex;
+  align-items: center;
+}
 .btn {
   margin-top: 20px;
   display: flex;
